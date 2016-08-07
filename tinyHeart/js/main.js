@@ -96,6 +96,8 @@ function init(){
 		momBodyOra[i].src = "./src/bigSwim" + i + ".png";
 		momBodyBlue[i].src = "./src/bigSwimBlue" + i + ".png";
  	}
+ 	ctx1.font = "30px Verdana";
+	ctx1.textAlign = "center";//left, center, right
 }
 
 function gameloop(){
@@ -120,9 +122,11 @@ function gameloop(){
 }
 
 function onMouseMove(e){
-	if(e.offSetX || e.layerX){
+	if(!data.gameOver){
+		if(e.offSetX || e.layerX){
 		mx = e.offSetX == undefined ? e.layerX : e.offSetX;
 		my = e.offSetY == undefined ? e.layerY : e.offSetY;
-		
+		}
 	}
+
 }

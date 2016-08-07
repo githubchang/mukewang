@@ -59,6 +59,8 @@ babyObj.prototype.draw = function() {
 		this.babyBodyTimer %= 300;
 		if(this.babyBodyCount > 19){
 			this.babyBodyCount = 19;
+			//game over
+			data.gameOver = true;
 		}
 	}
 	ctx1.save();
