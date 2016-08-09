@@ -3,6 +3,7 @@ var fruitObj = function(){
 	this.x = [];
 	this.y = [];
 	this.l = [];
+	this.aneNO = [];
 	this.spd = [];//果实放大 上升速度
 	this.fruitType = [];
 	this.orange = new Image();
@@ -14,6 +15,7 @@ fruitObj.prototype.init = function(){
 		this.alive[i] = false;
 		this.x[i] = 0;
 		this.y[i] = 0;
+		this.aneNO[i] = 0;
 		this.spd[i] = Math.random() * 0.017 + 0.003;//[0.003, 0.01)
 		this.fruitType[i] = "";
 		//this.born(i);
@@ -35,6 +37,10 @@ fruitObj.prototype.draw = function(){
 		}
 		if (this.alive[i] == true) {
 			if(this.l[i] <= 14){
+				var NO = this.aneNO[i]
+				this.x[i] = ane.headx[NO];
+				this.y[i] = ane.heady[NO];
+
 				this.l[i] += this.spd[i] * deltaTime;
 			}else{
 				this.y[i] -= this.spd[i] * 7 * deltaTime;
@@ -47,9 +53,10 @@ fruitObj.prototype.draw = function(){
 	}
 }
 fruitObj.prototype.born = function(i){
-	var aneID = Math.floor(Math.random() * ane.num);
-	this.x[i] = ane.x[aneID];
-	this.y[i] = canHeight-ane.len[aneID];
+	//var aneID = Math.floor(Math.random() * ane.num);
+	this.aneNO[i] = Math.floor(Math.random() * ane.num);
+	//this.x[i] = ane.headx[aneID];
+	//this.y[i] = ane.heady[aneID];
 	this.l[i] = 0;
 	this.alive[i] = true;
 	var ran = Math.random();
